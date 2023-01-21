@@ -1,0 +1,51 @@
+{% extends 'pacientes_lista.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+	<title>Record</title>
+{% endblock %}
+
+
+
+{% block table %}
+    <section>
+      <div class="container-fluid ">
+        <div class="row mb-5 px-5">
+          <div class="col-xl-11 col-lg-11 col-md-12 ml-auto">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="text-muted text-center mb-4">Crear nuevo paciente</h2>
+								<h3 class="text-muted text-center mb-4">Por favor completa el formulario (1 de 4)</h3>
+                        <div class="row">
+                          <div class="container jumbotron col-10">
+                            <form class="" method="POST" enctype="multipart/form-data" >
+          										<p class="text-center asterisco">Los campos marcados con *, son obligatorios</p>
+                              {% csrf_token %}
+                              {{form|crispy}}
+                              <button type="submit" class="btn btn-success">Crear</button>
+                            </form>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+{% endblock %}
+
+{% block topmenu %}
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+
+    </ul>
+  </div>
+</nav>
+{% endblock %}

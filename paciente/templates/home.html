@@ -1,0 +1,201 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block title %}
+    <title>Bienvenido a Vortex</title>
+    {% endblock %}
+
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'paciente/home.css' %}">
+    {% endblock %}
+
+    {% block links %}
+
+    <!-- CSS only -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<!-- font awesome y fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-html5-1.6.1/b-print-1.6.1/r-2.2.3/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-html5-1.6.1/b-print-1.6.1/r-2.2.3/datatables.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
+
+
+    {% endblock %}
+  </head>
+
+  {% block barra_navegacion %}
+      <nav class="navbar navbar-expand-lg  fixed-top navbar navbar-dark bg-dark">
+        {% if user.is_authenticated %}
+          <a class="navbar-brand active" href="{% url 'home' %}">Vortex</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mr-lg-auto">
+                    <a class="nav-link ml-3" href="{% url 'class_pacientes_lista' %}"><i class="fas fa-solar-panel fa-lg ml-3 mr-2"></i>Panel de Control</a>
+                </ul>
+                <ul class="navbar-nav ml-lg-auto">
+                    <a class="nav-link" href="{% url 'admin:logout' %}"><button type="button" class="btn btn-secondary">Cerrar Sesión</button></a>
+                </ul>
+            </div>
+          {% else %}
+                        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+                         <ul class="navbar-nav ml-lg-auto ">
+                         <li class="nav-item mr-auto">
+                            <a class="nav-link" href="{% url 'login' %}"><button type="button" class="btn btn-secondary">Iniciar Sesión</button></a>
+                          </li>
+                        </ul>
+          {% endif %}
+       </nav>
+  {% endblock %}
+
+
+{% block body %}
+      <body>
+        <div id="home">
+          <div class="landing-text">
+            <h1>Dra. Graciela Briones </h1>
+            <h3>Oftalmología</h3>
+          </div>
+
+        </div>
+
+        <div class="padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+                <img src="{% static "webpage/dra.png" %}">
+            </div>
+            <div class="col-sm-6 text-center">
+              <h2>All About User's Carrer.</h2>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <a href="#"class="btnD1">Leer más >>  </a>
+            </div>
+          </div>
+        </div>
+        </div>
+          <hr class="dark">
+        <div class="container-fluid padding">
+        <div class="row padding">
+               <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/static/webpage/doctor1.jpg">
+                        <div class="card-body">
+                            <h4 class="card-title">Articulo 1</h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-outline-secondary">Continuar</a>
+                        </div>
+                    </div>
+               </div>
+
+               <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/static/webpage/doctor2.jpg">
+                        <div class="card-body">
+                            <h4 class="card-title">Articulo 2</h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-outline-secondary">Continuar</a>
+                        </div>
+                    </div>
+               </div>
+
+               <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="/static/webpage/doctor1.jpg">
+                        <div class="card-body">
+                            <h4 class="card-title">Articulo 3</h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <a href="#" class="btn btn-outline-secondary">Continuar</a>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+
+        <div id="fixed">
+        </div>
+
+        <div class="padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4>Otra Información...</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="col-sm-6">
+              <img src="/static/webpage/doctor3.jpg">
+              </div>
+          </div>
+        </div>
+        </div>
+      </body>
+
+{% endblock %}
+
+{% block footer %}
+      <footer class="container-fluid text-center">
+          <div class="row">
+            <div class="col-sm-4">
+                    <hr class="light">
+                    <h3 class="cinta">Contáctenos</h3>
+                    <hr class="light">
+                    <h4 class="datos">Av. Periférico Sur 3697. C.P. 10700. CDMX</h4>
+                    <h4 class="datos">correo@gmail.com</h4>
+                    <h4 class="datos"> Tels. 5512 12007 / 551268 212077</h4>
+                    <h6>Ced. Prof. 52277812</h6>
+                    <h6>Reg. S.S.A. 6521209</h6>
+            </div>
+
+            <div class="col-sm-4">
+                    <hr class="light">
+                    <h3 class="cinta">Redes Sociales</h3>
+                    <hr class="light">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-google"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+            </div>
+
+            <div class="col-sm-4">
+                <hr class="light">
+                <h3 class="cinta">Acerca de...</h3>
+                <hr class="light">
+                <h3 id="vortex_footer">Vortex</h3>
+            </div>
+          </div>
+        </footer>
+{% endblock %}

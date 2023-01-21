@@ -1,0 +1,29 @@
+{% extends 'pacientes_lista.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block table %}
+
+<section>
+  <div class="container-fluid">
+    <div class="row mb-5 px-5">
+      <div class="col-xl-10 col-lg-9 col-md-11 ml-auto">
+        <div class="row">
+          <div class="col-10 container jumbotron">
+            <h3 class="mb-5">¿Realmente desea eliminar el registro {{object}} ?</h3>
+                      <form class="form" method="post">
+                          {% csrf_token %}
+                          <input type="submit" name="Eliminar" value="Si, eliminar" class="btn btn-danger eliminar">
+                          <a  class="btn btn-warning cancelar ml-3" href="{% url 'class_pacientes_lista' %}">Cancelar</a>
+                      </form>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+</section>
+
+{% endblock %}

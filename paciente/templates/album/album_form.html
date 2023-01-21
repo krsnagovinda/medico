@@ -1,0 +1,67 @@
+{% extends 'pacientes_lista.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+	<title>Datos de Album</title>
+{% endblock %}
+
+{% block topmenu %}
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_pacientes_lista'%}"><i class="fas fa-user-injured fa-sm mr-1 activado"></i> Pacientes</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_consultas_lista' %}"><i class="fas fa-book-medical fa-sm mr-1"></i> Consultas</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_galeria_lista' %}"><i class="fas fa-portrait fa-sm mr-1"> Galerías</i></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" href="{% url 'class_album_lista' %}"><i class="fas fa-eye fa-sm mr-1"> Album</i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+
+{% block table %}
+<section>
+    <div class="container-fluid ">
+      <div class="row mb-5 px-5">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="text-muted text-center mb-4">Nuevos datos del Paciente</h2>
+
+              <div class="row">
+                <div class="container jumbotron col-10">
+
+                          <form method="post">
+																<p class="text-center asterisco mb-5">Los campos marcados con *, son obligatorios</p>
+                              {% csrf_token %}
+                              {{ form.media }}
+                              {{ form|crispy}}
+															<br>
+																	<div class="col-7 mx-auto">
+																			<input type="submit" value="Guardar" class="btn btn-primary btn-lg btn-block">
+																	</div>
+
+                          </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</section>
+
+{% endblock %}

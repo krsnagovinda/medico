@@ -1,0 +1,71 @@
+{% extends 'pacientes_lista.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'paciente/paciente/paciente_detail.css' %}">
+{% endblock %}
+
+
+{% block title %}
+	<title>Detalle de Record</title>
+{% endblock %}
+
+{% block topmenu %}
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_update' record.id %}"><i class="fas fa-user-injured fa-sm mr-1 activado"></i> Editar Datos</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_detail_record' record.id %}"><i class="fas fa-address-book fa-sm mr-1"></i> Record</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_detail_signos' record.id %}"><i class="fas fa-heartbeat fa-sm mr-1"> Signos Vitales</i></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" href="{% url 'class_detail_antecedentes' record.id %}"><i class="fas fa-procedures fa-sm mr-1"> Antecedentes Médicos</i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+
+
+{% block table %}
+
+<section>
+    <div class="container-fluid ">
+      <div class="row mb-5 px-5">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="text-muted text-center mb-4">Actualización de Record</h2>
+                <div class="row">
+                  <div class="container jumbotron col-10">
+
+                      <form method="post">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{ form|crispy}}
+												<div class="col-7 mx-auto">
+														<input type="submit" value="Guardar" class="btn btn-primary btn-lg btn-block">
+												</div>
+                      </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+   </div>
+  </div>
+</section>
+
+{% endblock %}

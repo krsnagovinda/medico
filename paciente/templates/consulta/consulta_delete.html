@@ -1,0 +1,42 @@
+{% extends 'dashboard3.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block topmenu %}
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+
+{% block table %}
+
+<section>
+  <div class="container-fluid">
+    <div class="row mb-5 px-5">
+      <div class="col-xl-10 col-lg-9 col-md-11 ml-auto">
+        <div class="row">
+          <div class="col-10 container jumbotron">
+                <h3 class="mb-5">¿Realmente desea eliminar la consulta {{object.id_Consulta}} de: {{object.id_Expediente}} ?</h3>
+                    <form class="form" method="post">
+                        {% csrf_token %}
+                          <input type="submit" name="Eliminar" value="Si, eliminar" class="btn btn-danger eliminar">
+                            <a  class="btn btn-warning cancelar ml-3" href="{% url 'class_consultas_lista' %}">Cancelar</a>
+                    </form>
+
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+</section>
+{% endblock %}

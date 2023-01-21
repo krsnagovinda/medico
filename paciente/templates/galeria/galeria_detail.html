@@ -1,0 +1,62 @@
+{% extends 'pacientes_lista.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'paciente/paciente/paciente_detail.css' %}">
+{% endblock %}
+
+{% block title %}
+	<title>Detalle de Galería</title>
+{% endblock %}
+
+{% block topmenu %}
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_pacientes_lista'%}"><i class="fas fa-user-injured fa-sm mr-1 activado"></i> Pacientes</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_consultas_lista' %}"><i class="fas fa-book-medical fa-sm mr-1"></i> Consultas</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_galeria_lista' %}"><i class="fas fa-portrait fa-sm mr-1"> Galerías</i></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" href="{% url 'class_album_lista' %}"><i class="fas fa-eye fa-sm mr-1"> Album</i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+{% block table %}
+<section>
+    <div class="container-fluid ">
+      <div class="row mb-5 px-5">
+        <div class="col-xl-10 col-lg-9 col-md-11 ml-auto">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="text-muted text-center mb-4">Galería</h2>
+
+              <div class="row">
+                <div class="container jumbotron col-10">
+              <h3 class="text-center mb-4">{{object}}</h3>
+              <p class="text-justify mb-2 datos">Paciente:</p> <p class="datos2 mb-4"> {{object.owner}}</p>
+              <p class="text-justify mb-2 datos">Fecha de Creación:</p> <p class="datos2 mb-4"> {{object.Fecha_galeria_creada}}</p>
+                  <br>
+                      <div class="col-7 mx-auto">
+                          <a href="{% url 'class_update_galeria' galeria.id %}" class="btn btn-primary btn-sm btn-block"><i class="fas fa-pencil-alt" aria-hidden="true"></i><br>Editar</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+{% endblock %}

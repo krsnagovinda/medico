@@ -1,0 +1,69 @@
+{% extends 'pacientes_lista.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+	<title>Signos vitales</title>
+{% endblock %}
+
+{% block topmenu %}
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_update' signos.id %}"><i class="fas fa-user-injured fa-sm mr-1 activado"></i> Editar Datos</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_detail_record' signos.id %}"><i class="fas fa-address-book fa-sm mr-1"></i> Record</a>
+      </li>
+      <li class="nav-item mr-3">
+        <a class="nav-link" href="{% url 'class_detail_signos' signos.id %}"><i class="fas fa-heartbeat fa-sm mr-1"> Signos Vitales</i></a>
+      </li>
+      <li class="nav-item mr-4">
+        <a class="nav-link" href="{% url 'class_detail_antecedentes' signos.id %}"><i class="fas fa-procedures fa-sm mr-1"> Antecedentes Médicos</i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+
+
+{% block table %}
+<section>
+    <div class="container-fluid ">
+      <div class="row mb-5 px-5">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="text-muted text-center mb-4">Signos vitales del Paciente</h2>
+
+              <div class="row">
+                <div class="container jumbotron col-8">
+
+				              <form method="post">
+												<p class="text-center asterisco mb-5">Los campos marcados con *, son obligatorios</p>
+				                	{% csrf_token %}
+				                	{{ form.media }}
+				                	{{form|crispy}}
+													<br>
+													<div class="col-7 mx-auto my-auto">
+														<input type="submit" value="Guardar" class="btn btn-primary btn-lg btn-block">
+													</div>
+
+
+
+				              </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+{% endblock %}

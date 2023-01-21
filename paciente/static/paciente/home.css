@@ -1,0 +1,129 @@
+/* Configuraciones generales */
+*{
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html, body{
+  height: 100%;
+  width:100%;
+  background-color: #e4e3f0;
+}
+
+/* cuerpo de la pagina */
+
+#home{
+    background:  url("/static/webpage/ha.jpg") no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+}
+
+.landing-text{
+  display: table-cell;
+  text-align: center;
+  padding-top: 120px;
+  font-family: 'Pacifico', cursive;
+
+}
+
+hr.dark{
+  border-top: 1px solid gray;
+  width: 100%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.padding{
+  padding: 80px 0;
+}
+
+.padding img {
+  width: 100%;
+}
+
+#fixed {
+  background:  url("/static/webpage/hosp.jpg") no-repeat center center fixed;
+  display: table;
+  height: 60%;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+}
+
+.btnD1{
+  display: inline-block;
+  padding: 5px 10px;
+  background: rgb(51, 98, 119);
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 50px;
+}
+
+.btnD1:hover{
+  color: aqua;
+  text-decoration: none;
+}
+
+footer{
+  width: 100%;
+  background-color: #3f3f3f;
+  padding: 1% 5% 2% 5%;
+  color: #FFF;
+}
+
+.cinta{
+font-family: 'Pacifico', cursive;
+}
+
+.datos{
+  font-size: 15px;
+}
+
+hr.light{
+  border-top: 1px solid #FD7527;
+  width: 95%;
+  margin-top: .8rem;
+  margin-bottom: 1rem;
+}
+
+#vortex_footer{
+  font-family: 'Pacifico', cursive;
+  padding-right: 20px;
+}
+
+.fa{
+    padding: 15px;
+    font-size: 25px;
+    color: #FFF;
+}
+
+.fa:hover{
+  color: #D5D5D5;
+  text-decoration: none;
+}
+
+.icon{
+  max-width: 250px;
+}
+
+@media (max-width:768px){
+  .landing-text h1{
+    font-size: 170%;
+  }
+  .fa{
+    font-size: 20px;
+    padding: 10px;
+  }
+  .icon{
+    padding-top: 5%;
+    max-width: 100px;
+  }
+}

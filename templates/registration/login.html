@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+{% load static %}
+{% load staticfiles %}
+
+{% block title %}
+        <title>Bienvenido a Vortex</title>
+    {% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css/login.css'%}">
+    {% endblock %}
+
+{% block barra_navegacion %}
+{% endblock %}
+
+{% block body %}
+<body>
+        <div class="login-box">
+            <img src="/static/webpage/avatar.png" class="avatar">
+              <h1>Sign in</h1>
+              <form method="post">
+                {% csrf_token %}
+                {{form}}
+                  <input type="submit" name="login" value="Entrar" class="btn btn-success">
+              </form>
+          </div>
+  </body>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

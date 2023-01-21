@@ -1,0 +1,86 @@
+{% extends 'pacientes_lista.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'paciente/paciente/paciente_detail.css' %}">
+{% endblock %}
+
+{% block title %}
+	<title>Detalle de Paciente</title>
+{% endblock %}
+
+{% block topmenu %}
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+{% endblock %}
+
+{% block table %}
+
+  <section>
+
+            <div class="row">
+              <div class="col-12 align-items-center">
+            	<h2 class="text-muted text-center mb-4">Perfíl Clínico del paciente</h2>
+
+				<div class="row">
+				  <div class="container jumbotron col-7 ">
+                      <h3 class="text-center mb-5">{{object}}</h3>
+                      <p class="text-justify mb-2 datos"> Fecha de Nacimiento:</p> <p class="datos2 mb-4">{{object.Fecha_Nacimiento}}</p>
+                      <p class="text-justify mb-2 datos">Edad:</p> <p class="datos2 mb-4">{{object.Edad}}</p>
+                      <p class="text-justify mb-2 datos">Sexo:</p> <p class="datos2 mb-4">{{object.Sexo}}</p>
+                      <p class="text-justify mb-2 datos">Estado Civil:</p> <p class="datos2 mb-4">{{object.Estado_Civil}}</p>
+                      <p class="text-justify mb-2 datos">Ocupación:</p> <p class="datos2 mb-4">{{object.Ocupacion}}</p>
+                      <p class="text-justify mb-2 datos">Nacionalidad:</p> <p class="datos2 mb-4">{{object.Nacionalidad}}</p>
+                      <p class="text-justify mb-2 datos">Domicilio:</p> <p class="datos2 mb-4">{{object.Domicilio|safe}}</p>
+                      <p class="text-justify mb-2 datos">Ciudad:</p> <p class="datos2 mb-4">{{object.Ciudad}}</p>
+                      <p class="text-justify mb-2 datos">Teléfono:</p> <p class="datos2 mb-4">{{object.Telefono}}</p>
+                      <p class="text-justify mb-2 datos">Email:</p> <p class="datos2 mb-4">{{object.Email}}</p>
+
+				 </div>
+
+				 <div class="col-4">
+					 <div class="botones">
+ 					    <div class="box1  ">
+ 					        
+ 					        <div class="row mb-3">
+ 					                <td>
+ 					                  <a href="{% url 'class_detail_record' paciente.id %}" class="btn btn-primary btn-md-3 shadow rounded-circle"> <i class="fas fa-user-injured" aria-hidden="true"></i><br>Record</a>
+ 					                </td>
+ 					        </div>
+
+ 					        <div class="row mb-3">
+ 					                <td>
+ 					                  <a href="{% url 'class_detail_signos' paciente.id %}" class="btn btn-danger btn-md-3 shadow rounded-circle"> <i class="fas fa-heartbeat" aria-hidden="true"></i><br>Signos</a>
+ 					                </td>
+ 					        </div>
+
+ 					        <div class="row mb-3">
+ 					                <td>
+ 					                  <a href="{% url 'class_detail_antecedentes' paciente.id %}" class="btn btn-success btn-md-3 shadow rounded-circle"> <i class="fas fa-procedures" aria-hidden="true"></i><br>Datos</a>
+ 					                </td>
+ 					        </div>
+
+ 					        <div class="row mb-3">
+ 					                <td>
+ 					                  <a href="{% url 'class_update' paciente.id %}" class="btn btn-secondary btn-md-3 shadow rounded-circle"> <i class="fas fa-pencil-alt" aria-hidden="true"></i><br>Editar</a>
+ 					                </td>
+ 					        </div>
+
+
+ 					    </div>
+				 </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
